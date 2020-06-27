@@ -83,15 +83,15 @@
    <body>
      <?php
       $status = '&#8987; Nothing happened';
-      $hash = '$2y$10$tiWAEQ01XAD1Qgn1J6GFee1A4ZTTBKbHTkF2qORqF/HPGYY5ZEDLC';
+      $hash = '$2y$10$mUb8UTMi8izRGT3SKRolqu/jaY.y8NVkWxMeTMoohrw6qMiph5Z1y';
 
       if (isset($_POST['submit'])){
-        $pw = $_POST["password"];
+        $pw = $_POST['password'];
         if (password_verify($pw, $hash)) {
           $status = "&#9989; Success!";
           shell_exec("server_boot.sh");
       } else {
-         $status = "&#10062; Error, probably wrong password, try again.";
+         $status = "&#10060; Error, probably wrong password, try again.";
       }
     }
       ?>
