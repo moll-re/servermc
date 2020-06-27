@@ -1,0 +1,8 @@
+[Unit]
+Description=Periodic server commands
+
+[Service]
+Type=oneshot
+ExecStart=/home/mc/servermc/server/main.sh
+User=mc
+Group=systemd-journal
