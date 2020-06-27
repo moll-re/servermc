@@ -89,7 +89,7 @@
         $pw = $_POST['password'];
         if (password_verify($pw, $hash)) {
           $status = "&#9989; Success!";
-          shell_exec("server_boot.sh");
+          shell_exec("sh ~/servermc/server_boot.sh");
       } else {
          $status = "&#10060; Error, probably wrong password, try again.";
       }
