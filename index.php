@@ -82,16 +82,16 @@
 
    <body>
      <?php
-      $status = 'at rest';
+      $status = '&#8987; Nothing happened';
       $hash = '$2y$10$tiWAEQ01XAD1Qgn1J6GFee1A4ZTTBKbHTkF2qORqF/HPGYY5ZEDLC';
 
       if (isset($_POST['submit'])){
         $pw = $_POST["password"];
         if (password_verify($pw, $hash)) {
-          $status = "SUCCESS";
+          $status = "&#9989; Success!";
           shell_exec("server_boot.sh");
       } else {
-         $status = "try again";
+         $status = "&#10062; Error, probably wrong password, try again.";
       }
     }
       ?>
