@@ -100,7 +100,7 @@
       <div class="form-style-6">
         <h1>Let the games begin!</h1>
         <form method="post" action="">
-          <input type="password" name="field1" placeholder="Password" />
+          <input type="password" name="password" placeholder="Password" />
           <input type="submit" value="submit" name="submit"/>
         </form>
         <br/><b>Reminder:</b> ip adress is: <a href="mc.remy-moll.selfhost.eu">mc.remy-moll.selfhost.eu</a>
