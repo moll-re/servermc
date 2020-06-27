@@ -6,7 +6,7 @@
    <body>
      <?php
       $status = 'at rest';
-      $hash = '$2y$07$BCryptRequires22Chrcte/VlQH0piJtjXl.0t1XkA8pw9dMXTpOq';
+      $hash = '$2y$10$tiWAEQ01XAD1Qgn1J6GFee1A4ZTTBKbHTkF2qORqF/HPGYY5ZEDLC';
 
       if (isset($_POST['submit'])){
         $pw = $_POST["password"];
