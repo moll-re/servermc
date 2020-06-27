@@ -10,7 +10,7 @@
 
       if (isset($_POST['submit'])){
         $pw = $_POST["password"];
-        if (password_verify('$pw', $hash)) {
+        if (password_verify($pw, $hash)) {
           $status = "SUCCESS";
           shell_exec("server_boot.sh");
       } else {
