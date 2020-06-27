@@ -89,7 +89,7 @@
         $pw = $_POST['password'];
         if (password_verify($pw, $hash)) {
           $status = "&#9989; Success!";
-          shell_exec("sh ~/servermc/server_boot.sh");
+          $t = shell_exec("wakeonlan 40:61:86:c3:f1:18");
       } else {
          $status = "&#10060; Error, probably wrong password, try again.";
       }
