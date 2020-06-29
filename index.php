@@ -85,8 +85,8 @@
       $web_status = '&#8987; Nothing happened';
       $hash = '$2y$10$mUb8UTMi8izRGT3SKRolqu/jaY.y8NVkWxMeTMoohrw6qMiph5Z1y';
 
-      $server_file = fopen("server_status.txt", "r") or die("Unable to open file!");
-      if (fread($server_file,filesize("server_status.txt"))=="ACTIVE"){
+      $server_file = fopen("/home/pi/servermc/server_status.txt", "r") or die("Unable to open file!");
+      if (fgets($server_file)=="ACTIVE"){
         $server_status = "&#9989; ACTIVE!";
       } else {
         $server_status = "&#10060; Not booted yet!";
@@ -110,7 +110,7 @@
       <div class="form-style-6">
         <h1>Let the games begin!</h1>
         <br/><b>Current server status:</b> <?php echo $server_status; ?>
-        
+
         <form method="post" action="">
           <input type="password" name="password" placeholder="Password" />
           <input type="submit" value="submit" name="submit"/>
