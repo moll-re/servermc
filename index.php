@@ -87,7 +87,7 @@
 
       $server_file = fopen("/home/pi/servermc/server_status.txt", "r") or die("Unable to open file!");
       if (fgets($server_file) == "ACTIVE\n"){
-        $server_status = "&#9989; ACTIVE!";
+        $server_status = "&#9989; Running!";
       } else {
         $server_status = "&#10060; Not booted yet!";
       }
@@ -108,7 +108,7 @@
 
 
       <div class="form-style-6">
-        <h1>Let the games begin!</h1>
+        <h1><b>Let the games begin!<b></h1>
         <b>Current server status:</b> <?php echo $server_status; ?>
         <br/>
         <form method="post" action="">
