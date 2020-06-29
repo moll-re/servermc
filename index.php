@@ -109,8 +109,8 @@
 
       <div class="form-style-6">
         <h1>Let the games begin!</h1>
-        <br/><b>Current server status:</b> <?php echo $server_status; ?>
-
+        <b>Current server status:</b> <?php echo $server_status; ?>
+        <br/>
         <form method="post" action="">
           <input type="password" name="password" placeholder="Password" />
           <input type="submit" value="submit" name="submit"/>
