@@ -82,16 +82,26 @@
 
    <body>
      <?php
-      $status = '&#8987; Nothing happened';
+      $web_status = '&#8987; Nothing happened';
       $hash = '$2y$10$mUb8UTMi8izRGT3SKRolqu/jaY.y8NVkWxMeTMoohrw6qMiph5Z1y';
+
+      $server_file = fopen("server_status.txt", "r") or die("Unable to open file!");
+      if (fread($server_file,filesize("server_status.txt"))=="ACTIVE"){
+        $server_status = "&#9989; ACTIVE!";
+      } else {
+        $server_status = "&#10060; Not booted yet!";
+      }
+
+      fclose($server_file);
+
 
       if (isset($_POST['submit'])){
         $pw = $_POST['password'];
         if (password_verify($pw, $hash)) {
-          $status = "&#9989; Success!";
+          $web_status = "&#9989; Success!";
           $t = shell_exec("wakeonlan 40:61:86:c3:f1:18");
       } else {
-         $status = "&#10060; Error, probably wrong password, try again.";
+         $web_status = "&#10060; Error, probably wrong password, try again.";
       }
     }
       ?>
@@ -99,12 +109,16 @@
 
       <div class="form-style-6">
         <h1>Let the games begin!</h1>
+        <br/><b>Current server status:</b> <?php echo $server_status; ?>
+        
         <form method="post" action="">
           <input type="password" name="password" placeholder="Password" />
           <input type="submit" value="submit" name="submit"/>
         </form>
-        <br/><b>Reminder:</b> ip adress is: <a href="mc.remy-moll.selfhost.eu">mc.remy-moll.selfhost.eu</a>
-        <br/><b>Status:</b> <?php echo $status; ?>
+        <br/><b>Result:</b> <?php echo $web_status; ?>
+        <br/><b>Reminder:</b> ip adress is: <a href="mc.remy-moll.selfhost.eu">mc.remy-moll.selfhost.eu</a>.
+        <p>If the Result is positive, wait a minute and reload the page to check that the PC has indeed booted.
+        <br/>The actual Minecraft-server takes longer to load, have a little patience!</p>
       </div>
    </body>
 </html>
