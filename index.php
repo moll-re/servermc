@@ -86,7 +86,7 @@
       $hash = '$2y$10$mUb8UTMi8izRGT3SKRolqu/jaY.y8NVkWxMeTMoohrw6qMiph5Z1y';
 
       $server_file = fopen("/home/pi/servermc/server_status.txt", "r") or die("Unable to open file!");
-      if (fgets($server_file) == "ACTIVE\n"){
+      if (fgets($server_file) == "ACTIVE\n" || fgets($server_file) == "ACTIVE"){
         $server_status = "&#9989; Running!";
       } else {
         $server_status = "&#10060; Not booted yet!";
