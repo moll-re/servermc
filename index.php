@@ -100,6 +100,7 @@
         if (password_verify($pw, $hash)) {
           $web_status = "&#9989; Success!";
           $t = shell_exec("wakeonlan 40:61:86:c3:f1:18");
+          
       } else {
          $web_status = "&#10060; Error, probably wrong password, try again.";
       }
@@ -108,11 +109,11 @@
 
 
       <div class="form-style-6">
-        <h1><b>Let the games begin!<b></h1>
+        <h1><b>Let the games begin!</b></h1>
         <b>Current server status:</b> <?php echo $server_status; ?>
         <br/>
         <form method="post" action="">
-          <input type="password" name="password" placeholder="Password" />
+          <input type="password" name="password" placeholder="Password"/>
           <input type="submit" value="submit" name="submit"/>
         </form>
         <br/><b>Result:</b> <?php echo $web_status; ?>
