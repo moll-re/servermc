@@ -1,5 +1,5 @@
 #!/bin/bash
-#launched from .bashrc for user mc
+#launched from crontab (@reboot) for user mc
 
-cd ~/tekxit3
+cd /home/mc/servermc/server
 mcwrapper start

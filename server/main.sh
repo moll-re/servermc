@@ -1,12 +1,11 @@
 #!/bin/bash
-#launched through crontab every 10 mins
+#launched through crontab every 8 mins (*/8 * * * *)
 
-cd /home/mc/tekxit3
+cd /home/mc/servermc/server
 
-
-if pgrep -x "java" > /dev/null
+if mcwrapper status
 then
-    mcwrapper cmd say "§l Please remember to run /stop before leaving the server"
+    mcwrapper cmd say "Please remember to run /stop before leaving the server"
 else
     shutdown now
 fi

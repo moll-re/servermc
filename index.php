@@ -13,7 +13,7 @@
         background: #43D1AF;
         padding: 20px 0;
         font-size: 140%;
-        font-weight: 300;
+        font-weight: 700;
         text-align: center;
         color: #fff;
         margin: -16px -16px 16px -16px;
@@ -100,7 +100,7 @@
         if (password_verify($pw, $hash)) {
           $web_status = "&#9989; Success!";
           $t = shell_exec("wakeonlan 40:61:86:c3:f1:18");
-          
+
       } else {
          $web_status = "&#10060; Error, probably wrong password, try again.";
       }
@@ -109,7 +109,7 @@
 
 
       <div class="form-style-6">
-        <h1><b>Let the games begin!</b></h1>
+        <h1>Let the games begin!</h1>
         <b>Current server status:</b> <?php echo $server_status; ?>
         <br/>
         <form method="post" action="">
