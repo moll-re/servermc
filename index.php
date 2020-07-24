@@ -81,19 +81,25 @@
    </head>
 
    <body>
-     <?php
-      $web_status = '&#8987; Nothing happened';
-      $hash = '$2y$10$mUb8UTMi8izRGT3SKRolqu/jaY.y8NVkWxMeTMoohrw6qMiph5Z1y';
+     <?php#
 
-      $server_file = fopen("/home/pi/servermc/server_status.txt", "r") or die("Unable to open file!");
-      if (fgets($server_file) == "ACTIVE\n" || fgets($server_file) == "ACTIVE"){
+      function ping($host="192.168.2.182",$port=22,$timeout=2){
+        $fsock = fsockopen($host, $port, $errno, $errstr, $timeout);
+        if (! $fsock ){
+          return FALSE;
+        }else{
+          return TRUE;
+        }
+      }
+
+      $web_status = '&#8987; Nothing happened';
+      if(ping()){
         $server_status = "&#9989; Running!";
       } else {
         $server_status = "&#10060; Not booted yet!";
       }
 
-      fclose($server_file);
-
+      $hash = '$2y$10$mUb8UTMi8izRGT3SKRolqu/jaY.y8NVkWxMeTMoohrw6qMiph5Z1y';
 
       if (isset($_POST['submit'])){
         $pw = $_POST['password'];
@@ -110,11 +116,15 @@
 
       <div class="form-style-6">
         <h1>Let the games begin!</h1>
+        <p>Ok it is easy. Is the server running? Then hurry and join via minecraft. It shuts down after 10 mins of inactivity.
+          If it isn't, all you need to do is enter the super-secret password and hit the Start-button. Then after a little while the minecraft-server should appear as online.</p>
+        <p>Oh, while I'm at it, don't trust the little status-indicator below. It doesn't work very well.</p>
+
         <b>Current server status:</b> <?php echo $server_status; ?>
         <br/>
         <form method="post" action="">
           <input type="password" name="password" placeholder="Password"/>
-          <input type="submit" value="submit" name="submit"/>
+          <input type="submit" value="submit" name="Start!"/>
         </form>
         <br/><b>Result:</b> <?php echo $web_status; ?>
         <br/><b>Reminder:</b> ip adress is: <a href="mc.remy-moll.selfhost.eu">mc.remy-moll.selfhost.eu</a>.
