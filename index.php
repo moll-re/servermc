@@ -18,6 +18,15 @@
 
   $hash = '$2y$10$mUb8UTMi8izRGT3SKRolqu/jaY.y8NVkWxMeTMoohrw6qMiph5Z1y';
 
+  if (isset($_POST['submit'])){
+    $pw = $_POST['password'];
+    if (password_verify($pw, $hash)) {
+      $web_status = "&#9989; Success!";
+      $t = shell_exec("wakeonlan 40:61:86:c3:f1:18");
+    } else {
+      $web_status = "&#10060; Error, probably wrong password, try again.";
+    }
+  }
 ?>
 
 <html>
@@ -103,17 +112,6 @@
   </head>
 
   <body>
-    <?php
-      if (isset($_POST['submit'])){
-        $pw = $_POST['password'];
-        if (password_verify($pw, $hash)) {
-          $web_status = "&#9989; Success!";
-          $t = shell_exec("wakeonlan 40:61:86:c3:f1:18");
-        } else {
-          $web_status = "&#10060; Error, probably wrong password, try again.";
-        }
-      }
-    ?>
     <div class="form-style-6">
       <h1>Let the games begin!</h1>
       <p>
@@ -129,7 +127,7 @@
 
       <form method="post" action="">
         <input type="password" name="password" placeholder="Password"/>
-        <input type="submit" value="submit" name="Start!"/>
+        <input type="submit" value="Start!" name="submit"/>
       </form>
 
       <br/><b>Result:</b> <?php echo $web_status; ?>
