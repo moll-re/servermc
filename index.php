@@ -1,3 +1,36 @@
+<?php
+
+ function ping($host="192.168.2.182",$port=22,$timeout=2){
+   $fsock = fsockopen($host, $port, $errno, $errstr, $timeout);
+   if (! $fsock ){
+     return FALSE;
+   }else{
+     return TRUE;
+   }
+ }
+
+ $web_status = '&#8987; Nothing happened';
+
+ if(ping()){
+   $server_status = "&#9989; Running!";
+ } else {
+   $server_status = "&#10060; Not booted yet!";
+ }
+
+ $hash = '$2y$10$mUb8UTMi8izRGT3SKRolqu/jaY.y8NVkWxMeTMoohrw6qMiph5Z1y';
+
+ if (isset($_POST['submit'])){
+   $pw = $_POST['password'];
+   if (password_verify($pw, $hash)) {
+     $web_status = "&#9989; Success!";
+     $t = shell_exec("wakeonlan 40:61:86:c3:f1:18");
+
+ } else {
+    $web_status = "&#10060; Error, probably wrong password, try again.";
+ }
+}
+ ?>
+
 <html>
    <head>
     <title>Activate MC</title>
@@ -81,39 +114,6 @@
    </head>
 
    <body>
-     <?php#
-
-      function ping($host="192.168.2.182",$port=22,$timeout=2){
-        $fsock = fsockopen($host, $port, $errno, $errstr, $timeout);
-        if (! $fsock ){
-          return FALSE;
-        }else{
-          return TRUE;
-        }
-      }
-
-      $web_status = '&#8987; Nothing happened';
-      if(ping()){
-        $server_status = "&#9989; Running!";
-      } else {
-        $server_status = "&#10060; Not booted yet!";
-      }
-
-      $hash = '$2y$10$mUb8UTMi8izRGT3SKRolqu/jaY.y8NVkWxMeTMoohrw6qMiph5Z1y';
-
-      if (isset($_POST['submit'])){
-        $pw = $_POST['password'];
-        if (password_verify($pw, $hash)) {
-          $web_status = "&#9989; Success!";
-          $t = shell_exec("wakeonlan 40:61:86:c3:f1:18");
-
-      } else {
-         $web_status = "&#10060; Error, probably wrong password, try again.";
-      }
-    }
-      ?>
-
-
       <div class="form-style-6">
         <h1>Let the games begin!</h1>
         <p>Ok it is easy. Is the server running? Then hurry and join via minecraft. It shuts down after 10 mins of inactivity.
