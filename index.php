@@ -118,9 +118,6 @@
         Ok it is easy. Is the server running? Then hurry and join via minecraft. It shuts down after 10 mins of inactivity.
         If it isn't, all you need to do is enter the super-secret password and hit the Start-button. Then after a little while the minecraft-server should appear as online.
       </p>
-      <p>
-        Oh, while I'm at it, don't trust the little status-indicator below. It doesn't work very well.
-      </p>
 
       <b>Current server status:</b> <?php echo $server_status; ?>
       <br/>
