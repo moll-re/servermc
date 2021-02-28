@@ -115,7 +115,7 @@
     <div class="form-style-6">
       <h1>Let the games begin!</h1>
       <p>
-        Ok it is easy. Is the server running? Then hurry and join via minecraft. It shuts down after 10 mins of inactivity.
+        Ok it's easy. Is the server running? Then hurry and join via minecraft. It shuts down after 10 mins of inactivity.
         If it isn't, all you need to do is enter the super-secret password and hit the Start-button. Then after a little while the minecraft-server should appear as online.
       </p>
 
