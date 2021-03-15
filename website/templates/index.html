@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+   <head>
+      <title>{{ title }}</title>
+      <link rel="stylesheet" href='../static/style.css'/>
+   </head>
+   <body>
+      <h1>{{ heading}}</h1>
+      <p>{{ explanation }}</p>
+      <form action="/{{ action_dest }}/" method="post">
+         <input type="password" id="pw" name="pw"><br>
+         <button name="forwardBtn" type="submit">{{ action_name }}</button>
+      </form>
+     
+      <p><b>status: </b>{{ status }}</p>
+   </body>
+</html>

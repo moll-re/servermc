@@ -1,0 +1,9 @@
+html{
+    font-family: Verdana, "Lucida Sans Unicode", sans-serif;
+}
+
+
+h1, h2{
+    color:  #595959;
+    border-bottom: 3px solid #595959;
+}
