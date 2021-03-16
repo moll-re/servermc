@@ -5,7 +5,10 @@
    </head>
    <body>
       <h1>{{ heading}}</h1>
-      <p>{{ explanation }}</p>
+      {% for item in explanation %}
+         <p>{{ item }}</p>
+      {% endfor %}
+
       <form action="/{{ action_dest }}/" method="post">
          <input type="password" id="pw" name="pw"><br>
          <button name="forwardBtn" type="submit">{{ action_name }}</button>
