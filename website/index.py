@@ -9,17 +9,17 @@ from hw import handler
 import os
 
 server_adress = "server.remy-moll.v6.rocks"
-
+server_ip = "192.168.178.54"
+handler = handler(server_ip, server_adress)
 
 @app.route('/')
 def index():
    templateData = {
-      'title' : 'Server mc!',
       'heading' : "Start the MC-server here",
       "explanation" : explanation,
       "action_name" : 'activate',
       "action_dest" : "activate",
-      "status" : "🔴 Not started yet"
+      "status" : status_text()
       }
    return render_template('index.html', **templateData)
 
@@ -40,7 +40,6 @@ def activate_server():
       explanation = ["Uh oh..."]
 
    templateData = {
-      'title' : 'Server mc!',
       'heading' : "Launching the server",
       "explanation" : explanation,
       "action_name" : 'Reload',
@@ -53,30 +52,13 @@ def activate_server():
 @app.route("/status/", methods=['POST'])
 def refresh_page():
    templateData = {
-      'title' : 'Server mc!',
       'heading' : "Launching the server",
       "explanation" : ["A start-command was just sent to the server. It should be up in a short time. Refresh to see the status."],
       "action_name" : 'Reload',
       "action_dest" : "status",
-      "status" : get_status()
+      "status" : status_text()
    }
    return render_template('index.html', **templateData)
-
-
-
-def get_status():
-   # perform network ping test here
-   # do something else
-   hostname = "192.168.178.54"
-   response = os.system("ping -c 1 " + hostname)
-
-   status = (response == 0)
-
-   value = "🔴 Server not online yet. Give it a little time..."
-   if status:
-      value = "🟢 Server should be ready any second now. Try to connect"
-   
-   return value
 
 
 explanation = [
@@ -85,6 +67,14 @@ explanation = [
    "2. Give it a minute, just like for aternos",
    "3. Connect to " + server_adress
 ]
+
+def status_text():
+   status = handler.is_on()
+   value = "🔴 Server not online yet."
+   if status:
+       value = "🟢 Server responding to ping. You should be able to connect."
+   return value
+
 
 
 if __name__ == '__main__':

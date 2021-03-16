@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # launch as crontab:
-# @reboot sh ./server/website/launch.sh
-# 0,30 * * * * sh ./server/website/launch.sh
+# @reboot sh ~/servermc/website/launch.sh
+# 0,30 * * * * sh ~/servermc/website/launch.sh
 
 cd ~/servermc/website
 

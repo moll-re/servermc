@@ -7,36 +7,39 @@ try:
 except:
     real_deal = False
 
-class PiOut:
-    def __init__(self):
+class SimOut:
+    def __init__(self, host_ip, host_url):
+        print("Starting HW-handler")
+        self.host_ip = host_ip
+        self.host_url = host_url
+    
+    def turn_on(self):
+        print("Now starting the PC...")
+        if self.is_on():
+            return
+
+    def is_on(self):
+        response = os.system("ping -c 1 " + self.host_ip)
+        return not (response == 0)
+
+
+class PiOut(SimOut):
+    def __init__(self, host_ip, host_url):
+        super().__init__(host_ip, host_url)
         self.trigger = 18
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.trigger, GPIO.OUT)
 
     def turn_on(self):
-        if not self.already_on():
-            return
+        super().turn_on()
+        print("and on HW level too")
         GPIO.output(18, GPIO.HIGH)
         time.sleep(0.1)
         GPIO.output(18, GPIO.LOW)
-    
-    def already_on(self):
-        hostname = "192.168.178.54"
-        response = os.system("ping -c 1 " + hostname)
-
-        return (response == 0)
-
-class SimOut:
-    def __init__(self):
-        print("Using the sim")
-    
-    def turn_on(self):
-        print("Now the computer would start!")
-
 
 
 
 if real_deal:
-    handler = PiOut()
+    handler = PiOut
 else:
-    handler = SimOut()
+    handler = SimOut
