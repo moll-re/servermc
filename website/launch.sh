@@ -4,7 +4,7 @@
 # @reboot sh ./server/website/launch.sh
 # 0,30 * * * * sh ./server/website/launch.sh
 
-cd ./server/website
+cd ~/servermc/website
 
 if pgrep -x "python" > /dev/null
 then
