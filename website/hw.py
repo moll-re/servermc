@@ -21,7 +21,7 @@ class PiOut:
         GPIO.output(18, GPIO.LOW)
     
     def already_on(self):
-        hostname = "192.168.178.29"
+        hostname = "192.168.178.54"
         response = os.system("ping -c 1 " + hostname)
 
         return (response == 0)

@@ -67,7 +67,7 @@ def refresh_page():
 def get_status():
    # perform network ping test here
    # do something else
-   hostname = "192.168.178.29"
+   hostname = "192.168.178.54"
    response = os.system("ping -c 1 " + hostname)
 
    status = (response == 0)
@@ -81,7 +81,7 @@ def get_status():
 
 explanation = [
    "How it works:",
-   "1. Click_activate",
+   "1. Click activate",
    "2. Give it a minute, just like for aternos",
    "3. Connect to " + server_adress
 ]
