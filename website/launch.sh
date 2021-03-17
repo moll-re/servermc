@@ -6,7 +6,7 @@
 
 cd ~/servermc/website
 
-if pgrep -x "python" > /dev/null
+if pgrep -x "python3" > /dev/null
 then
     echo "Already running"
 else

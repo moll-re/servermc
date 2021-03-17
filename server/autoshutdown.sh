@@ -2,6 +2,7 @@
 
 # launch as crontab:
 # */5 * * * * ~/servermc/server/autoshutdown.sh
+
 stat = $(spigot status)
 
 if [$stat == "Not running"]
