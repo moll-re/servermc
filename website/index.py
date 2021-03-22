@@ -1,5 +1,6 @@
 # web stuff:
-from flask import Flask, render_template, Response, request, redirect, url_for
+from flask import Flask, Response, redirect, render_template, request, url_for
+
 app = Flask(__name__)
 import hashlib
 

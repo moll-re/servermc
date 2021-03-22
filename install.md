@@ -9,4 +9,6 @@ Run copy_config.sh with sudo
 
 
 ## Do once:
-* change 
+* disable discrete GPU on server:
+Add `install nouveau /bin/true` to `/etc/modprobe.d/blacklist.conf`. To reuse: remove line and reboot.
+

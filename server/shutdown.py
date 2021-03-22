@@ -4,7 +4,7 @@ import os
 def spigot_running():
     """returns True iff spigot is running"""
     for proc in psutil.process_iter():
-        if "spigot" in proc.name():
+        if "java" in proc.name():
             return True
     return False
 
@@ -38,7 +38,7 @@ def logout():
     else: # linux
         try: # for users like remy
             uname = os.getlogin()
-            os.system("sudo pkill -u" + uname)
+            os.system("pkill -u " + uname)
         except: # for users like craftbukkit, without homedir
             print("Doing nothing")
 
@@ -47,7 +47,7 @@ def poweroff():
         print("POWER OFF")
     else:
         print("POWER OFF")
-        os.system("sudo shutdown now")
+        os.system("sudo shutdown now") # sudo does not require a password on manjaro-tower
 
 
 
