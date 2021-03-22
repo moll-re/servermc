@@ -20,7 +20,7 @@ class SimOut:
 
     def is_on(self):
         response = os.system("ping -c 1 " + self.host_ip)
-        return not (response == 0)
+        return (response == 0) # response 0 means ping was successful
 
 
 class PiOut(SimOut):
