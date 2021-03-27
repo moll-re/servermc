@@ -8,23 +8,12 @@ def spigot_running():
             return True
     return False
 
-def other_users():
+def users():
     """returns True iff user remy (or other) is logged in (through ssh, vnc or other)"""
     # check own user:
-    try:
-        logged_in = os.getlogin()
-    except:
-        logged_in = "NO USER"
-    users = psutil.users()
     
     unames = [u.name for u in users]
-    
-    for i,u in enumerate(unames): # clear the list of the logged_in user:
-        if logged_in in u:
-            unames.pop(i)
-            break
-    
-    for user in unames: # if there are any more instances of remy, then return True in order to not shutdown
+    for user in unames: # if there are any instances of remy, then return True in order to not shutdown
         if "remy" in user or "Remy" in user:
             return True
 
@@ -51,7 +40,7 @@ def poweroff():
 
 
 
-if spigot_running() or other_users():
+if spigot_running() or users():
     # do nothing:
     print("PROCESSES STILL RUNNING -> doing nothing")
 else:
