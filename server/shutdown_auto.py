@@ -11,8 +11,10 @@ def spigot_running():
 def users():
     """returns True iff user remy (or other) is logged in (through ssh, vnc or other)"""
     # check own user:
-    users_logged = psutil.users()
-    
+    try:
+        users_logged = psutil.users()
+    except:
+        users_logged = []
     unames = [u.name for u in users_logged]
 
     for user in unames: # if there are any more instances of remy, then return True in order to not shutdown
