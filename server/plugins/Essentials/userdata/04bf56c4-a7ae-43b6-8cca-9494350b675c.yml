@@ -1,0 +1,24 @@
+lastAccountName: L0rd0fB0red0m
+timestamps:
+  login: 1616951116639
+  kits:
+    color: 1616948820305
+    tools: 1616948940317
+  logout: 1616952194109
+ipAddress: 2001:67c:10ec:574f:8000:0:0:246%0
+godmode: false
+afk: false
+logoutlocation:
+  world: world
+  x: 1468.699999988079
+  y: 5.0
+  z: -612.2560071019943
+  yaw: -69.750244
+  pitch: 13.199749
+lastlocation:
+  world: world
+  x: 1467.7246777318624
+  y: 5.0
+  z: -612.6999999880791
+  yaw: -84.6001
+  pitch: 23.099794
