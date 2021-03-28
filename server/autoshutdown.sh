@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # launch as crontab
-# */5 * * * * ~/servermc/server/autoshutdown.sh
+# */5 * * * * sh ~/servermc/server/autoshutdown.sh
+# run as user, NO SUDO
 
-python3 ~/servermc/server/shutdown_auto.py
+cd ~/servermc/server/ # important for imports
+python3 shutdown_auto.py
