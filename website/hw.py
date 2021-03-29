@@ -1,4 +1,5 @@
 import time
+import datetime
 import os
 
 real_deal = True
@@ -12,15 +13,19 @@ class SimOut:
         print("Starting HW-handler")
         self.host_ip = host_ip
         self.host_url = host_url
+        self.last_called = datetime.datetime.fromtimestamp(0)
     
     def turn_on(self):
-        print("Now starting the PC...")
         if self.is_on():
             return
+        self.last_called = datetime.datetime.now()
+        print("Now starting the PC...")
 
     def is_on(self):
         response = os.system("ping -c 1 " + self.host_ip)
-        return (response == 0) # response 0 means ping was successful
+        on_status = (response == 0) # response 0 means ping was successful
+        on_expected = datetime.datetime.now() - self.last_called <= datetime.timedelta(minutes=2)
+        return on_status or on_expected
 
 
 class PiOut(SimOut):
