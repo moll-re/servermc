@@ -1,19 +1,49 @@
 <!DOCTYPE html>
    <head>
       <title>MC server</title>
-      <link rel="stylesheet" href='../static/style.css'/>
-   </head>
-   <body>
-      <h1>{{ heading}}</h1>
-      {% for item in explanation %}
-         <p>{{ item }}</p>
-      {% endfor %}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+      <!-- CSS -->
+      <link rel="stylesheet" href="../static/css/poole.css">
+      <link rel="stylesheet" href="../static/css/syntax.css">
+      <link rel="stylesheet" href="../static/css/hyde.css">
+      <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
-      <form action="/{{ action_dest }}/" method="post">
-         <input type="password" id="pw" name="pw"><br>
-         <button name="forwardBtn" type="submit">{{ action_name }}</button>
-      </form>
-     
-      <p><b>status: </b>{{ status }}</p>
+      <!-- Icons -->
+      <link rel="shortcut icon" href="../static/favicon.ico">
+
+      <!-- Useful scripts -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <body class="theme-base-0d">
+      <div class="sidebar">
+         <div class="container sidebar-sticky">
+            <div class="sidebar-about">
+               <h1><a href="/">Server MC</a></h1>
+               <p class="lead">
+                  Starting and monitoring the minecraft server. All happens here.
+               </p>
+            </div>
+         </div>
+      </div>
+
+      <div class="content container">
+         <h1 class="page-title">{{ heading}}</h1>
+         {% for item in explanation %}
+            <p>{{ item }}</p>
+         {% endfor %}
+         {% if "" in action_with_password %}
+         <form action="/{{ action_dest }}/" method="post">
+            <input type="password" id="pw" name="pw"><br>
+            <button name="forwardBtn" type="submit">{{ action_with_password }}</button>
+         </form>
+         {% endif %}
+         {% if "" in action_without_password %}
+         <form action="/{{ action_dest }}/" method="post">
+            <button name="forwardBtn" type="submit">{{ action_without_password }}</button>
+         </form>
+         {% endif %}
+      
+         <p><b>status: </b>{{ status }}</p>
+      </div>
    </body>
 </html>

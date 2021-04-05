@@ -17,7 +17,7 @@ def index():
    templateData = {
       'heading' : "Start the MC-server here",
       "explanation" : explanation,
-      "action_name" : 'activate',
+      "action_with_password" : 'Activate',
       "action_dest" : "activate",
       "status" : status_text()
       }
@@ -30,20 +30,22 @@ def activate_server():
    if hashlib.sha256(pw.encode("utf-8")).hexdigest() == "5ac152b6f8bdb8bb12959548d542cb237c4a730064bf88bbb8dd6e204912baad": # hash of my super secret password
       handler.turn_on()
       status = "🟡 Just started the PC."
+      name = "action_without_password"
       action_name = 'Reload '
       action_dest = "status"
       explanation = ["Everything going to plan..."]
    else:
       status = "Wrong password. Nothing happened."
-      action_name = 'Try again'
+      name = "action_with_password"
+      action_name = 'Try again '
       action_dest = "activate"
       explanation = ["Uh oh..."]
 
    templateData = {
       'heading' : "Launching the server",
       "explanation" : explanation,
-      "action_name" : 'Reload',
-      "action_dest" : "status",
+      name : action_name,
+      "action_dest" : action_dest,
       "status" : status
    }
    return render_template('index.html', **templateData)
@@ -54,7 +56,7 @@ def refresh_page():
    templateData = {
       'heading' : "Launching the server",
       "explanation" : ["A start-command was just sent to the server. It should be up in a short time. Refresh to see the status."],
-      "action_name" : 'Reload',
+      "action_without_password" : 'Refresh status',
       "action_dest" : "status",
       "status" : status_text()
    }
