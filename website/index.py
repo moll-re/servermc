@@ -8,8 +8,8 @@ import hashlib
 from hw import handler
 
 server_adress = "server.remy-moll.v6.rocks"
-# server_ip = "192.168.178.54"
-server_ip = "server.remy-moll.v6.rocks" # probably more stable than the above, which might change due to dhcpcd
+server_ip = "192.168.178.54"
+# server_ip = "server.remy-moll.v6.rocks" # probably more stable than the above, which might change due to dhcpcd
 handler = handler(server_ip, server_adress)
 
 @app.route('/')
