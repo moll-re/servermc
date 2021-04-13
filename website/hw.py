@@ -22,7 +22,7 @@ class SimOut:
         print("Now starting the PC...")
 
     def is_on(self):
-        response = os.system("nc -w 1 -vz " + self.host_ip + " 2556")
+        response = os.system("nc -w 1 -vz " + self.host_ip + " 8123")
         print(response)
         on_status = (response == 0) # response 0 means ping was successful
         on_expected = datetime.datetime.now() - self.last_called <= datetime.timedelta(minutes=2)
